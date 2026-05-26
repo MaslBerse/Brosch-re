@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agentum Tableware - Interaktiver Fokusbericht</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'serif'],
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        forest: {
+                            50: '#f4f7f4',
+                            100: '#e6ede6',
+                            800: '#1e3322',
+                            900: '#142217',
+                        },
+                        bamboo: {
+                            500: '#8ca985',
+                            600: '#6b8a63',
+                        },
+                        sand: {
+                            50: '#faf8f5',
+                            100: '#f3eee7',
+                            200: '#e7decb',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .smooth-transition {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .page-fold {
+            box-shadow: 10px 0 15px -5px rgba(0,0,0,0.05), -10px 0 15px -5px rgba(0,0,0,0.05);
+        }
+    </style>
+</head>
+<body class="bg-sand-50 text-forest-900 font-sans antialiased selection:bg-bamboo-500 selection:text-white">
+
+    <!-- Header / Navigation -->
+    <header class="sticky top-0 z-50 bg-sand-50/90 backdrop-blur-md border-b border-sand-200">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <!-- Elegant Abstract Logo SVG -->
+                <svg class="w-8 h-8 text-forest-800" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v18M3 12h18M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9-4.03-9-9-9z" />
+                    <circle cx="12" cy="12" r="6" stroke-dasharray="2 2" />
+                </svg>
+                <div class="flex flex-col">
+                    <span class="font-serif tracking-widest text-lg font-bold uppercase text-forest-800">Agentum</span>
+                    <span class="text-[10px] tracking-widest uppercase text-bamboo-600 font-semibold -mt-1">Tableware AG</span>
+                </div>
+            </div>
+            
+            <div class="hidden md:flex items-center space-x-8 text-sm font-medium">
+                <a href="#broschuere" class="text-forest-800 hover:text-bamboo-600 smooth-transition">Broschüre durchblättern</a>
+                <a href="#calculator" class="text-forest-800 hover:text-bamboo-600 smooth-transition">Öko-Rechner</a>
+                <a href="#vision" class="text-forest-800 hover:text-bamboo-600 smooth-transition">Unsere Vision</a>
+            </div>
+
+            <div class="flex items-center space-x-4">
+                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-bamboo-500/10 text-bamboo-600">
+                    <span class="w-1.5 h-1.5 mr-1.5 rounded-full bg-bamboo-500 animate-pulse"></span>
+                    Fokus: Nachhaltigkeit
+                </span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero / Intro -->
+    <section class="relative py-20 overflow-hidden bg-gradient-to-b from-sand-100 to-sand-50">
+        <div class="max-w-5xl mx-auto px-6 text-center relative z-10">
+            <h1 class="font-serif text-4xl sm:text-6xl text-forest-800 leading-tight mb-6">
+                Zeitlose Qualität.<br><span class="italic text-bamboo-600">Nachhaltig verpackt.</span>
+            </h1>
+            <p class="text-base sm:text-lg text-forest-800/80 max-w-2xl mx-auto mb-10 leading-relaxed font-light">
+                Premium-Haushaltswaren neu gedacht. Wir bei der Agentum Tableware AG kombinieren jahrzehntelange Handwerkskunst mit einer der saubersten Transportlösungen unserer Generation.
+            </p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="#broschuere" class="px-8 py-3.5 bg-forest-800 hover:bg-forest-900 text-sand-50 rounded-full font-medium shadow-md hover:shadow-lg smooth-transition">
+                    Broschüre erkunden
+                </a>
+                <a href="#calculator" class="px-8 py-3.5 border border-forest-800/20 hover:border-forest-800 text-forest-800 rounded-full font-medium smooth-transition">
+                    Öko-Einsparung berechnen
+                </a>
+            </div>
+        </div>
+        
+        <!-- Abstract Background Lines -->
+        <div class="absolute inset-0 opacity-10 flex items-center justify-center pointer-events-none">
+            <svg class="w-[800px] h-[800px] text-forest-800" fill="none" viewBox="0 0 100 100">
+                <circle cx="50" cy="50" r="40" stroke="currentColor" stroke-width="0.2" />
+                <circle cx="50" cy="50" r="30" stroke="currentColor" stroke-width="0.2" />
+                <path d="M10,50 L90,50" stroke="currentColor" stroke-width="0.1" />
+            </svg>
+        </div>
+    </section>
+
+    <!-- Main Section: Interactive Brochure -->
+    <section id="broschuere" class="py-16 bg-white border-y border-sand-200">
+        <div class="max-w-7xl mx-auto px-6">
+            
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <h2 class="font-serif text-3xl text-forest-800 mb-3">Die Broschüre im Digitalformat</h2>
+                <p class="text-sm text-forest-800/60">
+                    Nutzen Sie die Steuerung, um durch die klassischen sechs Faltblatt-Seiten unserer Nachhaltigkeitsoffensive zu blättern.
+                </p>
+            </div>
+
+            <!-- View Mode Controls -->
+            <div class="flex justify-center mb-8">
+                <div class="bg-sand-100 p-1 rounded-full flex space-x-1">
+                    <button onclick="setViewMode('tabs')" id="btn-view-tabs" class="px-5 py-2 rounded-full text-xs font-medium smooth-transition bg-white text-forest-800 shadow-sm">
+                        Interaktive Tour
+                    </button>
+                    <button onclick="setViewMode('flat')" id="btn-view-flat" class="px-5 py-2 rounded-full text-xs font-medium smooth-transition text-forest-800/60 hover:text-forest-800">
+                        Klassisches Faltblatt (Aufgeklappt)
+                    </button>
+                </div>
+            </div>
+
+            <!-- VIEW 1: INTERACTIVE TOUR (Tabs / Slider) -->
+            <div id="view-tabs" class="max-w-4xl mx-auto">
+                <!-- Navigation Tabs -->
+                <div class="grid grid-cols-3 md:grid-cols-6 gap-2 mb-8">
+                    <button onclick="setTab(1)" id="tab-1" class="py-3 px-2 rounded-xl text-xs font-semibold text-center smooth-transition bg-forest-800 text-sand-50 shadow-sm">
+                        S1: Cover
+                    </button>
+                    <button onclick="setTab(2)" id="tab-2" class="py-3 px-2 rounded-xl text-xs font-semibold text-center smooth-transition bg-sand-100 text-forest-800/60 hover:bg-sand-200">
+                        S2: Problem
+                    </button>
+                    <button onclick="setTab(3)" id="tab-3" class="py-3 px-2 rounded-xl text-xs font-semibold text-center smooth-transition bg-sand-100 text-forest-800/60 hover:bg-sand-200">
+                        S3: Lösung
+                    </button>
+                    <button onclick="setTab(4)" id="tab-4" class="py-3 px-2 rounded-xl text-xs font-semibold text-center smooth-transition bg-sand-100 text-forest-800/60 hover:bg-sand-200">
+                        S4: Roadmap
+                    </button>
+                    <button onclick="setTab(5)" id="tab-5" class="py-3 px-2 rounded-xl text-xs font-semibold text-center smooth-transition bg-sand-100 text-forest-800/60 hover:bg-sand-200">
+                        S5: Werte & CSR
+                    </button>
+                    <button onclick="setTab(6)" id="tab-6" class="py-3 px-2 rounded-xl text-xs font-semibold text-center smooth-transition bg-sand-100 text-forest-800/60 hover:bg-sand-200">
+                        S6: Vision
+                    </button>
+                </div>
+
+                <!-- Page Display Card -->
+                <div class="bg-sand-50 border border-sand-200 rounded-3xl p-6 sm:p-10 shadow-xl relative min-h-[450px] flex flex-col justify-between overflow-hidden">
+                    <!-- Background Accent Watermark -->
+                    <div class="absolute -bottom-10 -right-10 opacity-[0.03] pointer-events-none">
+                        <svg class="w-80 h-80 text-forest-800" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M12 3v18M3 12h18" />
+                        </svg>
+                    </div>
+
+                    <!-- Page Content Container -->
+                    <div id="tab-content" class="relative z-10">
+                        <!-- Content will be injected dynamically via JavaScript -->
+                    </div>
+
+                    <!-- Navigation Foot -->
+                    <div class="mt-8 pt-6 border-t border-sand-200 flex justify-between items-center relative z-10">
+                        <button onclick="prevTab()" id="btn-prev" class="px-4 py-2 text-xs font-semibold text-forest-800/60 hover:text-forest-800 flex items-center smooth-transition">
+                            <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+                            Zurück
+                        </button>
+                        <span id="page-counter" class="text-xs font-bold tracking-wider text-bamboo-600 uppercase">Seite 1 / 6</span>
+                        <button onclick="nextTab()" id="btn-next" class="px-4 py-2 text-xs font-semibold text-forest-800/60 hover:text-forest-800 flex items-center smooth-transition">
+                            Weiter
+                            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- VIEW 2: FLAT MAP (Außenseite & Innenseite) -->
+            <div id="view-flat" class="hidden space-y-16">
+                <!-- INNENSEITE (S2, S3, S4) -->
+                <div>
+                    <h3 class="text-xs font-bold uppercase tracking-widest text-bamboo-600 mb-6 text-center">Innenseiten des Faltblatts</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <!-- S2 -->
+                        <div class="bg-sand-50 p-8 rounded-2xl border border-sand-200 page-fold flex flex-col justify-between">
+                            <div>
+                                <span class="text-[10px] font-bold tracking-widest text-forest-800/40 uppercase">Seite 2</span>
+                                <h4 class="font-serif text-xl text-forest-800 mt-2 mb-4">Das ökologische Dilemma</h4>
+                                <p class="text-sm text-forest-800/70 leading-relaxed mb-4">
+                                    Hochwertige, fragile Haushaltswaren wie Kristallgläser und Porzellan benötigen auf dem Transportweg extremen mechanischen Schutz.
+                                </p>
+                                <div class="bg-red-50 border-l-2 border-red-500 p-3 rounded-r-lg text-xs text-red-800 mb-4">
+                                    <strong>Bisherige Praxis:</strong> Hoher Materialverbrauch an erdölbasierten Plastikfolien und schädlichen Füllstoffen. Unnötiger Müll belastet Gewässer und künftige Generationen.
+                                </div>
+                            </div>
+                            <div class="text-[11px] font-semibold text-forest-800/50">Agentum Tableware AG • Dülmen</div>
+                        </div>
+
+                        <!-- S3 -->
+                        <div class="bg-forest-800 text-sand-100 p-8 rounded-2xl border border-forest-900 page-fold flex flex-col justify-between">
+                            <div>
+                                <span class="text-[10px] font-bold tracking-widest text-sand-100/40 uppercase">Seite 3</span>
+                                <h4 class="font-serif text-xl text-sand-50 mt-2 mb-4 text-bamboo-500">100 % Natürlicher Schutz</h4>
+                                <p class="text-sm text-sand-100/80 leading-relaxed mb-4">
+                                    Unsere Antwort ist ein konsequentes Kreislaufkonzept ohne Kompromisse.
+                                </p>
+                                <ul class="space-y-2 text-xs text-sand-100/90 mb-6">
+                                    <li class="flex items-center"><span class="w-1.5 h-1.5 bg-bamboo-500 rounded-full mr-2"></span> Außenverpackung aus Recyclingkarton</li>
+                                    <li class="flex items-center"><span class="w-1.5 h-1.5 bg-bamboo-500 rounded-full mr-2"></span> 100 % weiche Bambusfasern als Füllstoff</li>
+                                    <li class="flex items-center"><span class="w-1.5 h-1.5 bg-bamboo-500 rounded-full mr-2"></span> Reißfestes Bambus-Wickelpapier</li>
+                                </ul>
+                            </div>
+                            <div class="text-[11px] font-semibold text-bamboo-500">Biologisch abbaubarer Premiumschutz</div>
+                        </div>
+
+                        <!-- S4 -->
+                        <div class="bg-sand-50 p-8 rounded-2xl border border-sand-200 page-fold flex flex-col justify-between">
+                            <div>
+                                <span class="text-[10px] font-bold tracking-widest text-forest-800/40 uppercase">Seite 4</span>
+                                <h4 class="font-serif text-xl text-forest-800 mt-2 mb-4">GreenRoot & Transformation</h4>
+                                <p class="text-sm text-forest-800/70 leading-relaxed mb-4">
+                                    Durch unsere Tochterfirma <strong>GreenRoot Bamboo Solutions</strong> sichern wir den nachhaltigen Anbau über wassersparende Systeme und Solarenergie.
+                                </p>
+                                <div class="border-l-2 border-bamboo-500 pl-3 space-y-2 py-1">
+                                    <p class="text-[11px] text-forest-800/80"><strong>Schritt 1:</strong> Lieferkettenaufbau</p>
+                                    <p class="text-[11px] text-forest-800/80"><strong>Schritt 2:</strong> Materialproduktion</p>
+                                    <p class="text-[11px] text-forest-800/80"><strong>Schritt 3:</strong> Logistikumstellung</p>
+                                    <p class="text-[11px] text-forest-800/80"><strong>Schritt 4:</strong> Kundenaufklärung</p>
+                                </div>
+                            </div>
+                            <div class="text-[11px] font-semibold text-forest-800/50">GreenRoot Bamboo Solutions</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AUSSENSEITE (S5, S6, S1) -->
+                <div>
+                    <h3 class="text-xs font-bold uppercase tracking-widest text-bamboo-600 mb-6 text-center">Außenseiten des Faltblatts</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <!-- S5 -->
+                        <div class="bg-sand-50 p-8 rounded-2xl border border-sand-200 page-fold flex flex-col justify-between">
+                            <div>
+                                <span class="text-[10px] font-bold tracking-widest text-forest-800/40 uppercase">Seite 5</span>
+                                <h4 class="font-serif text-xl text-forest-800 mt-2 mb-4">Unternehmensethik & CSR</h4>
+                                <p class="text-sm text-forest-800/70 leading-relaxed mb-4 font-light italic">
+                                    „Verantwortung für die Umwelt ist kein optionaler Zusatz, sondern das Fundament zukunftsfähigen Wirtschaftens.“
+                                </p>
+                                <p class="text-xs text-forest-800/80 leading-relaxed">
+                                    Wir verbinden handwerkliche Perfektion mit bewusster Abkehr von der globalen Wegwerfkultur. Ein klarer Fokus auf die Erhaltung stabiler Kreisläufe.
+                                </p>
+                            </div>
+                            <div class="text-[11px] font-semibold text-bamboo-600">Generationengerechte Kreislaufwirtschaft</div>
+                        </div>
+
+                        <!-- S6 -->
+                        <div class="bg-sand-100 p-8 rounded-2xl border border-sand-200 page-fold flex flex-col justify-between">
+                            <div>
+                                <span class="text-[10px] font-bold tracking-widest text-forest-800/40 uppercase">Seite 6 (Rückseite)</span>
+                                <h4 class="font-serif text-xl text-forest-800 mt-2 mb-4">Unsere Zukunftsvision</h4>
+                                <p class="text-xs text-forest-800/80 leading-relaxed mb-4">
+                                    Branchengrößen wie WMF setzen auf langlebige Produkte. Wir gehen den entscheidenden Schritt weiter und betrachten auch den Weg zum Kunden als integralen Teil des Schutzes unserer Biosphäre.
+                                </p>
+                                <div class="text-xs text-forest-800/60 leading-tight">
+                                    <strong>Kontakt:</strong><br>
+                                    Agentum Tableware AG<br>
+                                    Halterner Straße 42, 48249 Dülmen<br>
+                                    nachhaltigkeit@agentum-tableware.de
+                                </div>
+                            </div>
+                            <div class="text-[11px] font-semibold text-forest-800/40">© 2026 Agentum Tableware AG</div>
+                        </div>
+
+                        <!-- S1 -->
+                        <div class="bg-gradient-to-br from-forest-800 to-forest-900 text-sand-100 p-8 rounded-2xl border border-forest-950 page-fold flex flex-col justify-between">
+                            <div>
+                                <span class="text-[10px] font-bold tracking-widest text-bamboo-500 uppercase">Seite 1 (Titel)</span>
+                                <h4 class="font-serif text-2xl text-sand-50 mt-4 mb-2">Agentum Tableware</h4>
+                                <p class="text-xs text-bamboo-500 uppercase tracking-widest font-semibold mb-6">Zeitlose Qualität. Nachhaltig verpackt.</p>
+                                <p class="text-xs text-sand-100/70 leading-relaxed">
+                                    Premium-Haushaltswaren neu gedacht. Ein integrierter Report über unsere bahnbrechende Umstellung auf 100% kompostierbaren Stoßschutz aus Bambusfasern.
+                                </p>
+                            </div>
+                            <div class="text-[11px] font-semibold text-bamboo-500">Konzern-Sonderbericht Logistik</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Interactive Eco-Impact Calculator Section -->
+    <section id="calculator" class="py-20 bg-sand-100">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="bg-white rounded-3xl p-8 sm:p-12 shadow-xl border border-sand-200">
+                
+                <div class="text-center max-w-2xl mx-auto mb-10">
+                    <span class="inline-block px-3 py-1 bg-bamboo-500/10 text-bamboo-600 rounded-full text-xs font-semibold mb-2 uppercase tracking-widest">Live-Simulation</span>
+                    <h2 class="font-serif text-3xl text-forest-800">Öko-Impact-Rechner</h2>
+                    <p class="text-sm text-forest-800/70 mt-2">
+                        Wirtschaftlichkeit trifft Verantwortung. Schätzen Sie ab, wie viel umweltschädliches Verpackungsmaterial durch Ihre jährlichen Lieferungen vermieden werden kann.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                    <!-- Left: Controls -->
+                    <div class="space-y-6">
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-wider text-forest-800/70 mb-2">
+                                Jährliche Sendungen (Pakete)
+                            </label>
+                            <input type="range" id="range-shipments" min="100" max="25000" step="100" value="5000" class="w-full h-2 bg-sand-200 rounded-lg appearance-none cursor-pointer accent-bamboo-600" oninput="calculateImpact()">
+                            <div class="flex justify-between items-center mt-2">
+                                <span class="text-xs text-forest-800/50">100 Pakete</span>
+                                <span class="text-sm font-bold text-forest-800" id="val-shipments">5.000</span>
+                                <span class="text-xs text-forest-800/50">25.000 Pakete</span>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-wider text-forest-800/70 mb-2">
+                                Durchschnittliches Paketvolumen
+                            </label>
+                            <select id="select-size" class="w-full bg-sand-50 border border-sand-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-bamboo-600 text-forest-800" onchange="calculateImpact()">
+                                <option value="small">Kompakt (z.B. Tassen-Set, Besteckbox)</option>
+                                <option value="medium" selected>Standard (z.B. 12-teiliges Speiseservice)</option>
+                                <option value="large">Volumenpaket (z.B. Komplett-Sets, Gastro-Großpackung)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Right: Results Card -->
+                    <div class="bg-forest-800 text-sand-50 p-6 rounded-2xl space-y-6 relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-bamboo-500/10 rounded-full -mr-16 -mt-16 pointer-events-none"></div>
+                        
+                        <div>
+                            <h4 class="text-xs uppercase tracking-widest text-bamboo-500 font-semibold">Jährlicher Umwelt-Impact</h4>
+                            <p class="text-[10px] text-sand-100/60">Im Vergleich zu erdölbasierten Folienverpackungen</p>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <span class="block text-2xl font-serif text-sand-50" id="result-plastic">750 kg</span>
+                                <span class="text-[10px] text-sand-100/70 uppercase">Plastikmüll eingespart</span>
+                            </div>
+                            <div>
+                                <span class="block text-2xl font-serif text-sand-50" id="result-co2">1.850 kg</span>
+                                <span class="text-[10px] text-sand-100/70 uppercase">CO₂-Äquivalent reduziert</span>
+                            </div>
+                        </div>
+
+                        <div class="pt-4 border-t border-forest-500/30">
+                            <div class="flex items-start space-x-3">
+                                <div class="p-1.5 bg-bamboo-500/20 rounded-lg text-bamboo-500 mt-0.5">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                                </div>
+                                <p class="text-xs text-sand-100/80 leading-relaxed">
+                                    Der benötigte Bambus für diese Einsparung wächst auf unserer Farm in <strong id="result-growtime">nur ca. 12 Tagen</strong> vollständig nach!
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Strategic Vision & Philosophy -->
+    <section id="vision" class="py-24 bg-white relative">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <span class="text-xs font-bold uppercase tracking-widest text-bamboo-600 block mb-3">Unsere Vision</span>
+            <h2 class="font-serif text-4xl text-forest-800 mb-6">Für Generationen geschaffen</h2>
+            <p class="text-base text-forest-800/70 max-w-2xl mx-auto leading-relaxed mb-12">
+                Bei der Agentum Tableware AG glauben wir, dass echter technologischer und gestalterischer Fortschritt Hand in Hand mit dem Respekt vor den natürlichen Kreisläufen unseres Planeten gehen muss. Die Umstellung unserer gesamten Verpackungslogistik auf bio-basierte Bambussysteme ist kein bloßer Designtrend – es ist unsere Verpflichtung gegenüber den kommenden Generationen.
+            </p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="p-6 bg-sand-50 rounded-2xl border border-sand-200">
+                    <div class="w-10 h-10 bg-bamboo-500/10 text-bamboo-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                    </div>
+                    <h3 class="font-serif text-base text-forest-800 mb-2">Sichere Lieferketten</h3>
+                    <p class="text-xs text-forest-800/60">Anbau unter strengen Richtlinien auf eigenen Farmen unserer Tochtergesellschaft GreenRoot.</p>
+                </div>
+
+                <div class="p-6 bg-sand-50 rounded-2xl border border-sand-200">
+                    <div class="w-10 h-10 bg-bamboo-500/10 text-bamboo-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 1121.21 8H18.2M7 9a5 5 0 0110 0"/></svg>
+                    </div>
+                    <h3 class="font-serif text-base text-forest-800 mb-2">Kreislaufprinzip</h3>
+                    <p class="text-xs text-forest-800/60">Vollständige Zersetzung innerhalb weniger Wochen im normalen Gartenkompost.</p>
+                </div>
+
+                <div class="p-6 bg-sand-50 rounded-2xl border border-sand-200">
+                    <div class="w-10 h-10 bg-bamboo-500/10 text-bamboo-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+                    </div>
+                    <h3 class="font-serif text-base text-forest-800 mb-2">Vorreiterrolle</h3>
+                    <p class="text-xs text-forest-800/60">Während andere Anbieter nur langlebige Waren produzieren, sichern wir auch den Transport ab.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Elegant Footer -->
+    <footer class="bg-forest-900 text-sand-100 py-16 border-t border-forest-800">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12">
+            <div class="space-y-4">
+                <div class="flex items-center space-x-3">
+                    <div class="flex flex-col">
+                        <span class="font-serif tracking-widest text-lg font-bold uppercase text-sand-50">Agentum</span>
+                        <span class="text-[10px] tracking-widest uppercase text-bamboo-500 font-semibold -mt-1">Tableware AG</span>
+                    </div>
+                </div>
+                <p class="text-xs text-sand-100/60 leading-relaxed font-light">
+                    Wir produzieren zeitlose Haushaltswaren für Privatkunden, anspruchsvolle Gastronomie und internationale Spitzenhotellerie.
+                </p>
+            </div>
+
+            <div>
+                <h4 class="text-xs font-bold uppercase tracking-widest text-bamboo-500 mb-4">Hauptsitz</h4>
+                <p class="text-xs text-sand-100/70 leading-relaxed">
+                    Agentum Tableware AG<br>
+                    Halterner Straße 42<br>
+                    48249 Dülmen, Deutschland
+                </p>
+            </div>
+
+            <div>
+                <h4 class="text-xs font-bold uppercase tracking-widest text-bamboo-500 mb-4">Kontakt</h4>
+                <p class="text-xs text-sand-100/70 leading-relaxed">
+                    Tel.: +49 (0) 2594 / 12345-0<br>
+                    E-Mail: info@agentum-tableware.de<br>
+                    E-Mail (CSR): nachhaltigkeit@agentum-tableware.de
+                </p>
+            </div>
+
+            <div>
+                <h4 class="text-xs font-bold uppercase tracking-widest text-bamboo-500 mb-4">Rechtliches</h4>
+                <ul class="space-y-2 text-xs text-sand-100/60">
+                    <li><a href="#" class="hover:text-sand-50 smooth-transition">Impressum</a></li>
+                    <li><a href="#" class="hover:text-sand-50 smooth-transition">Datenschutzerklärung</a></li>
+                    <li><a href="#" class="hover:text-sand-50 smooth-transition">Allgemeine Geschäftsbedingungen</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="max-w-7xl mx-auto px-6 mt-12 pt-8 border-t border-forest-800 flex flex-col sm:flex-row justify-between items-center text-[10px] text-sand-100/40">
+            <p>© 2026 Agentum Tableware AG. Alle Rechte vorbehalten.</p>
+            <p class="mt-2 sm:mt-0">Fokusbericht Logistik &amp; Nachhaltigkeit, Ausgabe 2026</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript logic -->
+    <script>
+        // Brochure Tabs Data
+        const pages = {
+            1: {
+                title: "Agentum Tableware AG",
+                subtitle: "Zeitlose Qualität. Nachhaltig verpackt.",
+                badge: "Unternehmens-Fokusbericht 2026",
+                html: `
+                    <div class="space-y-6">
+                        <span class="inline-block px-3 py-1 bg-forest-800 text-sand-100 text-[10px] font-semibold tracking-widest uppercase rounded">Titelseite</span>
+                        <h3 class="font-serif text-3xl sm:text-4xl text-forest-800 leading-tight">Premium-Haushaltswaren neu gedacht</h3>
+                        <p class="text-sm text-forest-800/70 leading-relaxed max-w-xl">
+                            Unsere exklusive Marke steht weltweit für Langlebigkeit, zeitlose Ästhetik und kompromisslose Verarbeitungsqualität. Erfahren Sie in diesem Bericht, wie wir zeitlose Besteck- und Geschirrkollektionen mit einer vollständig grünen Versandstrategie verbinden.
+                        </p>
+                        <div class="bg-sand-100/80 p-4 rounded-xl border border-sand-200 inline-block text-xs text-forest-800/80">
+                            <strong>Unternehmen:</strong> Über 10.000 Mitarbeitende weltweit<br>
+                            <strong>Zielgruppe:</strong> Privatkunden, gehobene Gastronomie & Hotellerie
+                        </div>
+                    </div>
+                `
+            },
+            2: {
+                title: "Das ökologische Dilemma",
+                subtitle: "Die Kehrseite perfekter Schutzsysteme",
+                badge: "Die Herausforderung",
+                html: `
+                    <div class="space-y-6">
+                        <span class="inline-block px-3 py-1 bg-red-800 text-sand-50 text-[10px] font-semibold tracking-widest uppercase rounded">Das Problem</span>
+                        <h3 class="font-serif text-3xl text-forest-800 leading-tight">Müllvermeidung vs. Transportschutz</h3>
+                        <p class="text-sm text-forest-800/70 leading-relaxed">
+                            Hochwertige, fragile Haushaltswaren wie Kristallgläser, kunstvolle Tassen und feinste Keramiken verlangen extremen Stoßschutz. Die klassische Methode nutzt Unmengen an Plastik, schädlichen Synthetik-Folien und Füllmaterialien. 
+                        </p>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div class="bg-red-50 p-4 rounded-xl border border-red-100">
+                                <span class="text-xs font-bold text-red-800 block mb-1">Unnötiger Müll</span>
+                                <p class="text-xs text-red-900/80">Riesige Berge an Verpackungsmaterial belasten dauerhaft die Umwelt.</p>
+                            </div>
+                            <div class="bg-red-50 p-4 rounded-xl border border-red-100">
+                                <span class="text-xs font-bold text-red-800 block mb-1">Ressourcenverbrauch</span>
+                                <p class="text-xs text-red-900/80">Konventionelles Plastik benötigt hunderte Jahre, um sich biologisch zu zersetzen.</p>
+                            </div>
+                        </div>
+                    </div>
+                `
+            },
+            3: {
+                title: "Die biologische Lösung",
+                subtitle: "Verpackungsmaterialien aus 100% Bambusfaser",
+                badge: "Die Innovation",
+                html: `
+                    <div class="space-y-6">
+                        <span class="inline-block px-3 py-1 bg-bamboo-600 text-sand-50 text-[10px] font-semibold tracking-widest uppercase rounded">Die Lösung</span>
+                        <h3 class="font-serif text-3xl text-forest-800 leading-tight">100% Natur. Ohne Kompromisse.</h3>
+                        <p class="text-sm text-forest-800/70 leading-relaxed">
+                            Ab sofort ersetzen wir klassische Luftpolsterfolie, Plastikwickel und synthetische Füllmaterialien vollständig durch biologisch abbaubare Systeme:
+                        </p>
+                        <div class="grid grid-cols-2 gap-3 sm:gap-4">
+                            <div class="p-3 bg-white border border-sand-200 rounded-xl">
+                                <strong class="text-xs text-bamboo-600 block">Recycelter Karton</strong>
+                                <span class="text-[11px] text-forest-800/60">Ausschließlich Altpapier für den Außenkarton.</span>
+                            </div>
+                            <div class="p-3 bg-white border border-sand-200 rounded-xl">
+                                <strong class="text-xs text-bamboo-600 block">Bambusfasern</strong>
+                                <span class="text-[11px] text-forest-800/60">Als weiches, dämpfendes Füll- und Schutzmaterial.</span>
+                            </div>
+                            <div class="p-3 bg-white border border-sand-200 rounded-xl">
+                                <strong class="text-xs text-bamboo-600 block">Bambus-Wickelpapier</strong>
+                                <span class="text-[11px] text-forest-800/60">Reißfester Ersatz für dünne Plastikfolien.</span>
+                            </div>
+                            <div class="p-3 bg-white border border-sand-200 rounded-xl">
+                                <strong class="text-xs text-bamboo-600 block">100% Kompostierbar</strong>
+                                <span class="text-[11px] text-forest-800/60">Biologisch restlos abbaubare Materialien.</span>
+                            </div>
+                        </div>
+                    </div>
+                `
+            },
+            4: {
+                title: "Lieferkette & Transformation",
+                subtitle: "Konsequente Strukturen für stabile Ökosysteme",
+                badge: "Die Lieferkette",
+                html: `
+                    <div class="space-y-6">
+                        <span class="inline-block px-3 py-1 bg-forest-800 text-sand-100 text-[10px] font-semibold tracking-widest uppercase rounded">Infrastruktur</span>
+                        <h3 class="font-serif text-3xl text-forest-800 leading-tight">GreenRoot Bamboo Solutions</h3>
+                        <p class="text-sm text-forest-800/70 leading-relaxed">
+                            Unsere eigens aufgebaute Tochtergesellschaft sichert die nachhaltige Versorgung. Unsere Farmen nutzen Regenwasserauffangsysteme, Solaranlagen und gezielte Wiederaufforstung für einen minimalen ökologischen Fußabdruck.
+                        </p>
+                        
+                        <div class="relative pl-6 border-l-2 border-bamboo-500 space-y-4">
+                            <div>
+                                <strong class="text-xs text-forest-800 block">Schritt 1: Lieferkettenaufbau</strong>
+                                <span class="text-[11px] text-forest-800/60">Etablierung stabiler Ressourcenflüsse direkt von den GreenRoot-Farmen.</span>
+                            </div>
+                            <div>
+                                <strong class="text-xs text-forest-800 block">Schritt 2: Materialproduktion</strong>
+                                <span class="text-[11px] text-forest-800/60">Verarbeitung des schnell nachwachsenden Bambus zu Füllmaterialien und Spezialpapier.</span>
+                            </div>
+                            <div>
+                                <strong class="text-xs text-forest-800 block">Schritt 3: Logistikumstellung</strong>
+                                <span class="text-[11px] text-forest-800/60">Flächendeckende Implementierung in unseren internationalen Versandzentren.</span>
+                            </div>
+                        </div>
+                    </div>
+                `
+            },
+            5: {
+                title: "Unternehmensethik & CSR",
+                subtitle: "Zukunftssicheres Wirtschaften im Einklang mit der Natur",
+                badge: "Werte & Philosophie",
+                html: `
+                    <div class="space-y-6">
+                        <span class="inline-block px-3 py-1 bg-bamboo-500/10 text-bamboo-600 text-[10px] font-semibold tracking-widest uppercase rounded">Ethik & CSR</span>
+                        <h3 class="font-serif text-3xl text-forest-800 leading-tight">Generationengerechter Konsum</h3>
+                        <p class="text-sm text-forest-800/70 leading-relaxed">
+                            Verantwortung bedeutet, den gesamten Lebensweg unserer Produkte zu betrachten. Wir positionieren uns aktiv gegen die globale Wegwerfkultur.
+                        </p>
+                        
+                        <div class="grid grid-cols-2 gap-4 text-xs">
+                            <div class="p-3 bg-bamboo-500/5 rounded-xl border border-bamboo-500/10">
+                                <span class="font-bold text-forest-800 block mb-1">Unsere Chancen</span>
+                                <ul class="list-disc list-inside space-y-1 text-forest-800/70">
+                                    <li>Müllreduktion</li>
+                                    <li>Zukunftssicheres Image</li>
+                                    <li>Erneuerbare Rohstoffe</li>
+                                </ul>
+                            </div>
+                            <div class="p-3 bg-sand-100 rounded-xl border border-sand-200">
+                                <span class="font-bold text-forest-800 block mb-1">Herausforderungen</span>
+                                <ul class="list-disc list-inside space-y-1 text-forest-800/70">
+                                    <li>Hohe Investitionen</li>
+                                    <li>Neue Prozesse</li>
+                                    <li>Komplexe Logistikketten</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                `
+            },
+            6: {
+                title: "Vision & Kontakt",
+                subtitle: "Gemeinsam auf dem Weg in die Zukunft",
+                badge: "Kontakt & Impressum",
+                html: `
+                    <div class="space-y-6">
+                        <span class="inline-block px-3 py-1 bg-forest-800 text-sand-50 text-[10px] font-semibold tracking-widest uppercase rounded">Ausblick</span>
+                        <h3 class="font-serif text-3xl text-forest-800 leading-tight">Gehen Sie den Weg mit uns</h3>
+                        <p class="text-sm text-forest-800/70 leading-relaxed">
+                            Unternehmen wie WMF demonstrieren den Wert langlebiger Produkte. Agentum geht einen entscheidenden Schritt weiter und schließt die Lücke durch eine vollständig kompostierbare Verpackungsstrategie.
+                        </p>
+                        
+                        <div class="pt-4 border-t border-sand-200 grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs text-forest-800/70">
+                            <div>
+                                <strong class="text-forest-800 block">Zentrale Dülmen:</strong>
+                                Agentum Tableware AG<br>
+                                Halterner Straße 42<br>
+                                48249 Dülmen
+                            </div>
+                            <div>
+                                <strong class="text-forest-800 block">Kontaktstelle:</strong>
+                                E-Mail: nachhaltigkeit@agentum-tableware.de<br>
+                                Web: www.agentum-tableware.de
+                            </div>
+                        </div>
+                    </div>
+                `
+            }
+        };
+
+        let currentTab = 1;
+
+        function setTab(num) {
+            currentTab = num;
+            updateBrochureUI();
+        }
+
+        function prevTab() {
+            if (currentTab > 1) {
+                currentTab--;
+                updateBrochureUI();
+            }
+        }
+
+        function nextTab() {
+            if (currentTab < 6) {
+                currentTab++;
+                updateBrochureUI();
+            }
+        }
+
+        function updateBrochureUI() {
+            // Update Navigation Tabs state
+            for (let i = 1; i <= 6; i++) {
+                const btn = document.getElementById(`tab-${i}`);
+                if (i === currentTab) {
+                    btn.className = "py-3 px-2 rounded-xl text-xs font-semibold text-center smooth-transition bg-forest-800 text-sand-50 shadow-sm";
+                } else {
+                    btn.className = "py-3 px-2 rounded-xl text-xs font-semibold text-center smooth-transition bg-sand-100 text-forest-800/60 hover:bg-sand-200";
+                }
+            }
+
+            // Inject Content
+            const content = pages[currentTab];
+            document.getElementById('tab-content').innerHTML = content.html;
+
+            // Counter update
+            document.getElementById('page-counter').innerText = `Seite ${currentTab} / 6`;
+
+            // Disable/Enable buttons if bounds hit
+            document.getElementById('btn-prev').style.opacity = currentTab === 1 ? '0.3' : '1';
+            document.getElementById('btn-prev').disabled = currentTab === 1;
+
+            document.getElementById('btn-next').style.opacity = currentTab === 6 ? '0.3' : '1';
+            document.getElementById('btn-next').disabled = currentTab === 6;
+        }
+
+        function setViewMode(mode) {
+            const tabView = document.getElementById('view-tabs');
+            const flatView = document.getElementById('view-flat');
+            const btnTabs = document.getElementById('btn-view-tabs');
+            const btnFlat = document.getElementById('btn-view-flat');
+
+            if (mode === 'tabs') {
+                tabView.classList.remove('hidden');
+                flatView.classList.add('hidden');
+                btnTabs.className = "px-5 py-2 rounded-full text-xs font-medium smooth-transition bg-white text-forest-800 shadow-sm";
+                btnFlat.className = "px-5 py-2 rounded-full text-xs font-medium smooth-transition text-forest-800/60 hover:text-forest-800";
+            } else {
+                tabView.classList.add('hidden');
+                flatView.classList.remove('hidden');
+                btnFlat.className = "px-5 py-2 rounded-full text-xs font-medium smooth-transition bg-white text-forest-800 shadow-sm";
+                btnTabs.className = "px-5 py-2 rounded-full text-xs font-medium smooth-transition text-forest-800/60 hover:text-forest-800";
+            }
+        }
+
+        // Calculator Logic
+        function calculateImpact() {
+            const shipments = parseInt(document.getElementById('range-shipments').value);
+            const size = document.getElementById('select-size').value;
+
+            document.getElementById('val-shipments').innerText = shipments.toLocaleString('de-DE');
+
+            // Plastic multiplier based on package size (in kg)
+            let plasticFactor = 0.15; // Medium (standard)
+            let co2Factor = 0.37; // Medium CO2
+
+            if (size === 'small') {
+                plasticFactor = 0.06;
+                co2Factor = 0.15;
+            } else if (size === 'large') {
+                plasticFactor = 0.35;
+                co2Factor = 0.86;
+            }
+
+            const totalPlastic = Math.round(shipments * plasticFactor);
+            const totalCO2 = Math.round(shipments * co2Factor);
+
+            // Bamboo grow logic (Bamboo grows ca. 1 meter a day under premium conditions)
+            // 1kg bamboo fiber takes around 0.5 meter growth.
+            const growDaysVal = Math.max(1, Math.round(totalPlastic / 60));
+
+            // Format results
+            document.getElementById('result-plastic').innerText = `${totalPlastic.toLocaleString('de-DE')} kg`;
+            document.getElementById('result-co2').innerText = `${totalCO2.toLocaleString('de-DE')} kg`;
+            document.getElementById('result-growtime').innerText = `nur ca. ${growDaysVal} Tagen`;
+        }
+
+        // On Load
+        window.onload = function() {
+            updateBrochureUI();
+            calculateImpact();
+        };
+    </script>
+</body>
+</html>
